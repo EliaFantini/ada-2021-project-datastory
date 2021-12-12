@@ -1,16 +1,3 @@
-## CS-401 Applied Data Analysis - Project
-
-This repository contains a data analysis project for CS-401 Applied Data Analysis at EPFL.
-
-### Authors
-
-- Maciej Styczeń - maciej.styczen@epfl.ch
-- Nicolo de Sabbata - camillo.desabbata@epfl.ch
-- Dixit Sabharwal - dixit.sabharwal@epfl.ch
-- Elia Fantini - elia.fantini@epfl.ch
-
-# Topic: You are what you say: can a bunch of words tell what your political view is?
-
 ## Abstract
 
 Political opinions can be one of the most socially unifying or divisive topics, defining the people we surround ourselves with. It has been strongly debated the extent to which contemporary political parties well represent each ideology and their internal and temporal coherence of opinions. What we plan to investigate in the following project is how such opinions and ideas can influence the way politicians speak, what they talk about, and the way they do it.
@@ -114,3 +101,10 @@ In the final week we aim to:
 - focus on writing an attractive data story based on our results
 
 We aim to follow an agile, sprint-based development workflow, therefore more precise internal milestones will be decided week by week, as the project progresses.
+
+### Authors
+
+- Maciej Styczeń - maciej.styczen@epfl.ch
+- Nicolo de Sabbata - camillo.desabbata@epfl.ch
+- Dixit Sabharwal - dixit.sabharwal@epfl.ch
+- Elia Fantini - elia.fantini@epfl.ch
