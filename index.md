@@ -19,7 +19,7 @@ In addition, we plan to use grammatical structure and complexity metrics to anal
 
 After preprocessing we have a dataset of 1.6m quotations of US politicians, associating each quote to the speaker who uttered it and his political affiliation - see an example below:
 
-![Sample from the US Politicians dataset](figures/dataframe-sample.png)
+![Sample from the US Politicians dataset](assets/figures/dataframe-sample.png)
 
 Please consult `preprocessing.ipynb` for the code and a more extensive explanation of the preprocessing steps.
 
@@ -37,7 +37,7 @@ Please consult `preprocessing.ipynb` for the code and a more extensive explanati
 #### Method:
 
 To get an initial understanding of what topics do politicians often mention, we performed a word frequency analysis (see `frequency_analysis.ipynb`). The results are visualized in the figure below:
-![Wordcloud for politicans](figures/wordcloud.png)
+![Wordcloud for politicans](assets/figures/wordcloud.png)
 
 Additionally, we used the [Manifesto-Project dataset](https://manifestoproject.wzb.eu), which provides sentences of the two parties' manifestos over years 2012, 2016, and 2020, labeled manually by experts to one of fifteen different topics/categories. Using this data we aim to train an ML model that depends on keyword frequency analysis, the model is trained on the distribution of these keywords in the labeled Manifesto-Project dataset and then used to classify the quotes into the same categories.
 
