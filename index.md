@@ -6,40 +6,41 @@ Starting from quotes of US representatives of the Democratic and Republican part
 
 ## Data preprocessing
 
-To perform the analysis, we are interested in selecting only the quotes from politicians and matching them with the political affiliation of the speaker.
-To obtain such a dataset, we perform the following preprocessing steps:
+To perform the analysis, we are interested in selecting only the quotes from politicians and matching them with the political affiliation of the speaker. To obtain a dataset of US Politician quotations, we proceed to:
 
-1. Load the Quotebank dataset.
-2. Drop the quotes without an attributed speaker.
-3. Load the Wikidata table with metadata about the speakers and select the speakers that are affiliated with the Democratic or Republican party.
-4. Perform an inner join between the table containing the quotes (Quotebank) and the table containing (Wikidata).
-5. Select the subset of the data that corresponds to politicians affiliated with Democrats and Republicans that were candidates in at least one election.
+1. Only keep the quotations where the speaker's party is Republican or Democratic.
+2. Filter out speakers who have never run for any state or federal level election - the majority of the speakers affiliated with the political parties were not actual politicians - they are often celebrities, sports stars, TV personalities, etc. We believe it is beneficial to only take the actual politicians, as they are more likely to speak about actual political matters and represent their party's ideology.
 
-In addition, we plan to use grammatical structure and complexity metrics to analyze quotes and drop the ones with outlier values, as they are likely to be meaningless quotes.
+Performing step 1 reduces the size of the dataset from 17 million rows to around 8 million rows, and step 2 reduces the size further to around 1.6 million.
 
-After preprocessing we have a dataset of 1.6m quotations of US politicians, associating each quote to the speaker who uttered it and his political affiliation - see an example below:
+## Area 1: Topic labeling
 
-![Sample from the US Politicians dataset](assets/figures/dataframe-sample.png)
+### Word clouds
+We first tried to see which are the most frequently used words in the quotation dataset. After filtering and preprocessing the words to remove commonly used words of the English language which don't provide us any additional information as to what topics are being talked about in the quotes. We ended up with a sample as such.
 
-Please consult `preprocessing.ipynb` for the code and a more extensive explanation of the preprocessing steps.
+Commonly used words in quotes from:
 
-## Research questions
+<div class="container" style="display:flex; justify-content:center;">
+  <div class="img-wrapper" style="width: 100%; height: auto; margin-right: 2px">
+    Democrats
+    <img src="assets/figures/democrats.png" title="Commonly used topic-words from Democratic speakers"/>
+  </div>
 
-### Area 1: Topic labeling
+  <div class="img-wrapper" style="width: 100%; height: auto; margin-left: 2px">
+    Republicans
+    <img src="assets/figures/republicans.png" title="Commonly used topic-words from Republican speakers"/>
+  </div>
+</div>
 
-1. What terms/phrases characteristic of politics appear most often in the quotations? Is there a difference between the terms used by the two parties?
-2. Can a classifier be constructed to automatically classify quotations to groups corresponding to topics (e.g. economy, military, environment)?
-3. How do the popular topics differ between the two parties? Can the popular topics be linked to the ideologies linked to the speaker's party?
-4. How does the topic's popularity evolve with time?
+Identifying the most commonly used words is a good first step to understanding what do the politicians often talk about, but the results are a bit too fine-grained to draw meaningful conclusions from them.
 
-**Note**: Questions 3 and 4 can only be answered if we can successfully assign topics to quotations.
+To overcome this issue, we want to identify the high level concepts/topics that are commonly discussed, and classify each quote to one of the topics.
 
-#### Method:
+### Clustering
 
-To get an initial understanding of what topics do politicians often mention, we performed a word frequency analysis (see `frequency_analysis.ipynb`). The results are visualized in the figure below:
-![Wordcloud for politicans](assets/figures/wordcloud.png)
+We used unsupervised clustering, using transformers and c-TF-IDF through Berttopic, to create dense clusters of our filtered words. We ended up with around 900 clusters and with some manual post-processing we narrowed down to 20 or so well-defined and labelled clusters.
 
-Additionally, we used the [Manifesto-Project dataset](https://manifestoproject.wzb.eu), which provides sentences of the two parties' manifestos over years 2012, 2016, and 2020, labeled manually by experts to one of fifteen different topics/categories. Using this data we aim to train an ML model that depends on keyword frequency analysis, the model is trained on the distribution of these keywords in the labeled Manifesto-Project dataset and then used to classify the quotes into the same categories.
+TODO: visualize initial topics
 
 ### Area 2: Sentiment analysis
 
