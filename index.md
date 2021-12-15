@@ -17,12 +17,14 @@ The result of such filtering and processing was a “smaller” dataset of 1.6 m
 ## A deep dive into the data: what are the trending topics?
 Previous to any deeper analysis, the most important thing we could do was to understand what the two parties talk about. What are the main problems, topics, trends, and events of the United States? How are they addressed by politicians? Let’s look, first, at the “big words”, those words that are always used and that you will most likely run into if you’re reading a sentence told by whatever politician.
 
+
 <div class="container" style="display:flex; justify-content:center;">
   <div class="img-wrapper" style="width: 100%; height: auto; margin-right: 2px">
     Democrats
-    <img src="assets/figures/democrats.png" title="Commonly used topic-words from Democratic speakers"/>
-  </div>
+    <img src="assets/figures/democrats.png" title="DEMO"/>
+</div>
 
+  
 Then, we might try to look for a difference between the two parties. We hence performed the same analysis but divided the quotes into two parts. The following clouds of words show the result.
 
 (Dem and rep word clouds)
