@@ -16,20 +16,10 @@ To learn meaningful insights about sentences from politicians we firstly needed 
 The result of such filtering and processing was a “smaller” dataset of 1.6 million quotations.
 ## A deep dive into the data: what are the trending topics?
 Previous to any deeper analysis, the most important thing we could do was to understand what the two parties talk about. What are the main problems, topics, trends, and events of the United States? How are they addressed by politicians? Let’s look, first, at the “big words”, those words that are always used and that you will most likely run into if you’re reading a sentence told by whatever politician.
-
-
-<div class="container" style="display:flex; justify-content:center;">
-  <div class="img-wrapper" style="width: 100%; height: auto; margin-right: 2px">
-    Democrats
-    <img src="assets/figures/democrats.png" title="DEMO"/>
-</div>
-
-  
   
 Then, we might try to look for a difference between the two parties. We hence performed the same analysis but divided the quotes into two parts. The following clouds of words show the result.
   
   
-
 (Dem and rep word clouds)
 
 Identifying the most commonly used words is a good first step to understanding what do the politicians often talk about and we can already spot some differences between the two parties, but the results are a bit too fine-grained to draw meaningful conclusions from them. To overcome this issue, we want to identify the high-level concepts that are commonly discussed, and classify each quote into one of them. 
@@ -60,18 +50,35 @@ To conclude on this first part of the topic analysis, we tried to build a classi
 ## How do Democrats and Republicans relate to national and international problems?
 
 People say that how you relate to an obstacle has a big impact on how you try to solve the obstacle itself. Even though that’s often said about the individual’s way of solving problems, surely it’s important to see how political parties approach different problems to get a further understanding of the data we saw so far. For this reason, we applied two different sentiment analysis tools:
+
 1. VADER-Sentiment library: a rule-based sentiment analysis tool
 2. HuggingFace transformers library: a deep-learning-based NLP library providing access to several state-of-the-art models, often pre-trained on large datasets. In particular, we used RoBERTa, a model pre-trained specifically for the sentiment analysis task.
+
+
 Both tools assign to a sentence a score between -1 and 1, where -1 means a highly negative sentiment, whereas +1 means a highly positive one. A score of 0 represents neutrality. Plotting the distribution of sentiment for the two tools we could see how VADER-sentiment had much more neutral sentences, as well as a positive average, compared to RoBERTa. 
+
 (distribution common plot)
+
+
 Despite the differences, there’s no substantial gap in the results, so we could proceed by addressing the first question: do the two parties use a different way of talking about topics, i.e. completely different emotions?
+
 (distribution dem/rep sentiment plot  )
+
+
 From the plots above, we can see that there’s not a huge difference in the sentiment Democrats and Republicans communicate with. There is, though, a statistically significant gap in the average, suggesting, with both tools, that Democrats are slightly more positive in their sentences. Another insight that might be more noticeable in RoBERTa’s plot is the fact that Republicans tend to have much more extremely sentimental quotes. 
+
 From the famous “Psychologie des foules” by Gustave Le Bon we learned that mass communication performs better with emotions rather than logic. This is well known by politicians and, from our analysis, it seems like such an approach is used more by Republican ones.
+
 Investigating for further details, we then looked for sentiments at the topic level. Before proceeding, we would like to clarify a possible misunderstanding of the results. If for example, we see a predominant negative sentiment over the topic of education, that doesn’t mean that politicians are against it, but rather that when they talk about it they usually have some criticism about it. To be more specific, if a speaker is complaining about the educational system and wants to suggest some improvements, he would probably use some negative sentiment in his/her words, but that wouldn’t mean that he/her is against education itself. Let’s now look at the results.
+
+
 ( topic sentiments plot - to be created (personally, I would consider only RoBERTa which has less neutral results or maybe joining the results, but two plots are too much stuff to look at for the reader))
+
+
 What can we see? Firstly,  we can notice how negative sentiment exceeds the positive one: quotes are taken from news articles and news usually talk more about problems than positive events, just because they sell better. For this reason, we think that such results make sense. Then we observe how fake news and terrorism are in the top 3 most negative topics for both parties: obviously, it would have been hard to expect something else for terrorism, but it’s interesting to see it exceeded by fake news. Are they going to be one of the biggest threats in the future? 
+
 Looking at the remarkable differences, we see how the guns’ topic is usually more criticized by Democrats. As stated before, this does not necessarily mean that Democrats are against guns, but in this making stricter rules on guns is part of their campaign so we can infer that, and other studies confirm it also about their supporters. (Key facts about Americans and guns | Pew Research Center)
+
 (plot number 4 from the top in the link https://www.pewresearch.org/fact-tank/2021/09/13/key-facts-about-americans-and-guns/)
 
 Other confirms of the correctness of results come from the fact that Democrats obviously used much more positive sentiment when they talked about Obama and now about Joe Biden, as well as Democratic Party in general (maybe Maciej add something about bias for certain topics that might explain negative average for Obama and Biden for democrats as well ? ). Other big gaps between the two parties can be found on Taxes and Communism, and in this case, results might be interesting, since Republicans want lower taxes, hence we expected more criticism on it (do you agree? What about communism? Idk what to say).
