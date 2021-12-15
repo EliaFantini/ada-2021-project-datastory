@@ -25,7 +25,10 @@ Previous to any deeper analysis, the most important thing we could do was to und
 </div>
 
   
+  
 Then, we might try to look for a difference between the two parties. We hence performed the same analysis but divided the quotes into two parts. The following clouds of words show the result.
+  
+  
 
 (Dem and rep word clouds)
 
