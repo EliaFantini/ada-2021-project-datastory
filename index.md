@@ -10,17 +10,17 @@ The Republican Party, also referred to as the GOP ("Grand Old Party"), was found
 
 The Democratic was founded around 1828. Its philosophy of modern liberalism blends notions of civil liberty and social equality with support for a mixed economy. Corporate governance reform, environmental protection, support for organized labor, expansion of social programs, affordable college tuition, health care reform, equal opportunity, and consumer protection form the core of the party's economic agenda. On social issues, it advocates campaign finance reform, LGBT rights, criminal justice, and immigration reform, stricter gun laws, abortion rights, the abolition of capital punishment, and the legalization of marijuana. The current president, Joe Biden, is a Democrat and right now this party is the largest in the United States and the third-largest in the world.
 
-## How: the datasets that helped us with this data story
-To learn meaningful insights about sentences from politicians we firstly needed the sentences. That’s where came into play the Quotebank dataset, an open corpus of 178 million quotations attributed to the speakers who uttered them, extracted from 162 million English news articles published between 2008 and 2020. From such a huge amount of data, we took quotes where the speaker's party was Republican or Democratic, filtering out speakers who have never run for any state or federal level election. The majority of the speakers affiliated with the political parties were not actual politicians, but celebrities, sports stars, TV personalities, etc. We believe it was beneficial to only take the actual politicians, as they are more likely to speak about actual political matters and represent their party's ideology. Finally, to relate each speaker to the correct party we also used a part of the Wikidata dataset.
+> **How: the datasets that helped us with this data story**\
+To learn meaningful insights about sentences from politicians we firstly needed the sentences. That’s where came into play the [Quotebank](https://dlab.epfl.ch/people/west/pub/Vaucher-Spitz-Catasta-West_WSDM-21.pdf) dataset, an open corpus of 178 million quotations attributed to the speakers who uttered them, extracted from 162 million English news articles published between 2008 and 2020. From such a huge amount of data, we took quotes where the speaker's party was Republican or Democratic, filtering out speakers who have never run for any state or federal level election. The majority of the speakers affiliated with the political parties were not actual politicians, but celebrities, sports stars, TV personalities, etc. We believe it was beneficial to only take the actual politicians, as they are more likely to speak about actual political matters and represent their party's ideology. Finally, to relate each speaker to the correct party we also used a part of the [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) dataset. The result of such filtering and processing was a “smaller” dataset of 1.6 million quotations. Here is a plot of the distribution of quotes in the years from 2015 to 2020.
 
-The result of such filtering and processing was a “smaller” dataset of 1.6 million quotations.
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/quotes_across_time-1.png"/></div>
+
+
 ## A deep dive into the data: what are the trending topics?
-Previous to any deeper analysis, the most important thing we could do was to understand what the two parties talk about. What are the main problems, topics, trends, and events of the United States? How are they addressed by politicians? Let’s look, first, at the “big words”, those words that are always used and that you will most likely run into if you’re reading a sentence told by whatever politician.
-  
-Then, we might try to look for a difference between the two parties. We hence performed the same analysis but divided the quotes into two parts. The following clouds of words show the result.
+Previous to any deeper analysis, the most important thing we could do was to understand what the two parties talk about. What are the main problems, topics, trends, and events of the United States? How are they addressed by politicians? Let’s look, first, at the “big words”, those words that are always used and that you will most likely run into if you’re reading a sentence told by whatever politician. Then, we might try to look for a difference between the two parties. We hence performed the same analysis but divided the quotes into two parts. The following clouds of words show the result.
   
   
-(Dem and rep word clouds)
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/wordclouds_term_frequency-1.png"/></div>
 
 Identifying the most commonly used words is a good first step to understanding what do the politicians often talk about and we can already spot some differences between the two parties, but the results are a bit too fine-grained to draw meaningful conclusions from them. To overcome this issue, we want to identify the high-level concepts that are commonly discussed, and classify each quote into one of them. 
 
@@ -29,19 +29,19 @@ To achieve that, we first tried to use a transfer-learning approach: train a cla
 We then proceeded with unsupervised clustering using Bertopic, a topic modeling technique that leverages transformers and c-TF-IDF to create dense clusters allowing for easily interpretable topics whilst keeping important words in the topic descriptions. 
 The following plot is a summary of the interesting results we obtained from clustering.
 
-(stacked plot of topics)
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/stacked_plot_topics-1.png"/></div>
 
 The first thing worth noting from the stacked plot is the x-axis, reporting the macro-topics. Since this is the result of unsupervised clustering, those are the most frequent themes covered by representatives in their speeches. In the overall top 3, we have racial discrimination, nuclear weapons, and Russiagate.
-What is much more interesting though is the difference in the most important talking points between the two parties. Democrats put racial discrimination in the first place, whereas Republicans talked more than everything else about Russiagate. Trying to explain why is that and what are the social reasons behind such differences is probably incredibly hard and out of the target of this data story. For this reason, we just try to explain the top topic of Democrats as superficial proof of the validity of our findings. Why racial discrimination is a major theme of discussion needs probably no explanation, especially given the 2020 events, but why Democrats talk more about it might be explained by this plot taken  from Pew Research Center’s research (https://www.pewresearch.org/politics/2017/10/05/4-race-immigration-and-discrimination/)
+What is much more interesting though is the difference in the most important talking points between the two parties. Democrats put racial discrimination in the first place, whereas Republicans talked more than everything else about Russiagate. Trying to explain why is that and what are the social reasons behind such differences is probably incredibly hard and out of the target of this data story. For this reason, we just try to explain the top topic of Democrats as superficial proof of the validity of our findings. Why racial discrimination is a major theme of discussion needs probably no explanation, especially given the 2020 events, but why Democrats talk more about it might be explained by this plot taken  from [Pew Research Center’s research](https://www.pewresearch.org/politics/2017/10/05/4-race-immigration-and-discrimination/).
 
-(second plot)
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/pew1.png"/></div>
 
 Such finding shows that Democrats are more willing to change things to give blacks equal rights with whites, therefore it makes sense that their politicians speak more about the problem.
 (if someone can explain why it might make sense that republicans talked a lot more about Russia-gate, it would be great)
 
 Let’s now see things more in detail, looking at the top 10 topics from the two parties during the years. 
 
-(plots about  years top topics, when they’re ready)
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/stacked_plot_topics_years-1.png"/></div>
 
 … explanation of results, when we have them…
 
@@ -57,12 +57,13 @@ People say that how you relate to an obstacle has a big impact on how you try to
 
 Both tools assign to a sentence a score between -1 and 1, where -1 means a highly negative sentiment, whereas +1 means a highly positive one. A score of 0 represents neutrality. Plotting the distribution of sentiment for the two tools we could see how VADER-sentiment had much more neutral sentences, as well as a positive average, compared to RoBERTa. 
 
-(distribution common plot)
+
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/sentiment_distribution-1.png"/></div>
 
 
 Despite the differences, there’s no substantial gap in the results, so we could proceed by addressing the first question: do the two parties use a different way of talking about topics, i.e. completely different emotions?
 
-(distribution dem/rep sentiment plot  )
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/sentiment_dist_party_comparison-1.png"/></div>
 
 
 From the plots above, we can see that there’s not a huge difference in the sentiment Democrats and Republicans communicate with. There is, though, a statistically significant gap in the average, suggesting, with both tools, that Democrats are slightly more positive in their sentences. Another insight that might be more noticeable in RoBERTa’s plot is the fact that Republicans tend to have much more extremely sentimental quotes. 
@@ -77,9 +78,9 @@ Investigating for further details, we then looked for sentiments at the topic le
 
 What can we see? Firstly,  we can notice how negative sentiment exceeds the positive one: quotes are taken from news articles and news usually talk more about problems than positive events, just because they sell better. For this reason, we think that such results make sense. Then we observe how fake news and terrorism are in the top 3 most negative topics for both parties: obviously, it would have been hard to expect something else for terrorism, but it’s interesting to see it exceeded by fake news. Are they going to be one of the biggest threats in the future? 
 
-Looking at the remarkable differences, we see how the guns’ topic is usually more criticized by Democrats. As stated before, this does not necessarily mean that Democrats are against guns, but in this making stricter rules on guns is part of their campaign so we can infer that, and other studies confirm it also about their supporters. (Key facts about Americans and guns | Pew Research Center)
+Looking at the remarkable differences, we see how the guns’ topic is usually more criticized by Democrats. As stated before, this does not necessarily mean that Democrats are against guns, but in this making stricter rules on guns is part of their campaign so we can infer that, and other [studies](https://www.pewresearch.org/fact-tank/2021/09/13/key-facts-about-americans-and-guns/) confirm it also about their supporters. 
 
-(plot number 4 from the top in the link https://www.pewresearch.org/fact-tank/2021/09/13/key-facts-about-americans-and-guns/)
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/pew2.png"/></div>
 
 Other confirms of the correctness of results come from the fact that Democrats obviously used much more positive sentiment when they talked about Obama and now about Joe Biden, as well as Democratic Party in general (maybe Maciej add something about bias for certain topics that might explain negative average for Obama and Biden for democrats as well ? ). Other big gaps between the two parties can be found on Taxes and Communism, and in this case, results might be interesting, since Republicans want lower taxes, hence we expected more criticism on it (do you agree? What about communism? Idk what to say).
 
@@ -89,13 +90,15 @@ The final aspect we decided to analyze is how the two different parties speak to
 
 Let’s start with the different lexicon used. The first analysis we did was on the distribution of words length.
 
-(plot with words’ length distribution)
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/words_length_dist-1.png"/></div>
+
 
 As we can see the difference is almost none, but there’s a statistically significant difference between the two average lengths of words present in the vocabulary of quotes from Republican vs Democratic speakers (p-value of ~0.0). This might suggest slightly more complex words for Democratics, assuming that a longer word is also more complex. 
 
 But we wanted to dive deeper by looking at the most common words that appeared just in Republicans’ quotes and vice versa. Subsequently, we also clustered the words obtained here into sets of synonyms. 
 
-(the two word clouds and the clusters list)
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/wordclouds_unique_words-1.png"/></div>
+(cluster list, make a plot of it or something)
 (Help me on this one, idk what to write)
 
 But a sentence is not just about the words in it, but how they’re put together as well. For this reason, we then moved our attention to some metrics that are used to measure the grammatical complexity of quotes:
@@ -105,17 +108,22 @@ But a sentence is not just about the words in it, but how they’re put together
 3. Text Standard: based upon a combination of all the library's tests, returns the estimated school grade level required to understand the text.
 4. Reading time: returns the reading time of the given text. Assumes 14.69ms per character.
 
-(plots with metrics)
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/complexity_metrics_14-1.png"/></div>
 
 From the results shown above we can see a clear (and statistically significant) difference between the scores in all metrics, but before drawing any conclusion, let’s repeat the analysis on just the quotes from the two most important men from the two parties: Barack Obama and Donald Trump.
 
-(plots with metrics) 
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/complexity_metrics_19-1.png"/></div>
+
 
 Again, the plots show consistent results with the previous ones, considering all speakers from both parties. The last thing we can do is if we can observe any difference through the years.
 
-(Plot with years)
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/metrics_years-1.png"/></div>
 
-The result is stable across years and metrics, and it seems to suggest just one thing: there’s a substantial difference in the complexity and readability of quotes from the two parties and usually, Republican ones are easier to understand, as well as faster to read, even though reading time shows the smallest gap of the four metrics. Does this outcome make sense? Many articles covered this topic and what turned out to be clear in all of them is that Republicans and Democrats have become more and more polarized, with completely different opinions and languages ( Why Democrats and Republicans Speak Different Languages. LIterally. - The Atlantic , Opinion | Democrats and Republicans No Longer Speak the Same Language - The New York Times (nytimes.com), Why Democrats and Republicans Use Different Words (businessinsider.com)).  Considering all this, we should probably have not expected anything else but a significant gap. Why though Democrats use more complex sentences? Getting back to the rhetoric principle that a speaker adapts to his supporters, does this suggest that Republicans’  defenders are less literate? Accordingly to this plot and this research from Pew Research Center, yes (Ideological Gap Widens Between More, Less Educated Adults | Pew Research Center). 
+
+
+The result is stable across years and metrics, and it seems to suggest just one thing: there’s a substantial difference in the complexity and readability of quotes from the two parties and usually, Republican ones are easier to understand, as well as faster to read, even though reading time shows the smallest gap of the four metrics. Does this outcome make sense? Many articles covered this topic and what turned out to be clear in all of them is that Republicans and Democrats have become more and more polarized, with completely different opinions and languages ( [Why Democrats and Republicans Speak Different Languages. LIterally. - The Atlantic](https://www.theatlantic.com/politics/archive/2016/07/why-democrats-and-republicans-literally-speak-different-languages/492539/) , [Democrats and Republicans No Longer Speak the Same Language - The New York Times](https://www.nytimes.com/2021/04/09/opinion/infrastructure-democrats-republicans.html), [Why Democrats and Republicans Use Different Words - Business Insider](https://www.businessinsider.com/political-language-rhetoric-framing-messaging-lakoff-luntz-2017-8?r=US&IR=T)).  Considering all this, we should probably have not expected anything else but a significant gap. Why though Democrats use more complex sentences? Getting back to the rhetoric principle that a speaker adapts to his supporters, does this suggest that Republicans’  defenders are less literate? Accordingly to this plot and this [research from Pew Research Center](https://www.pewresearch.org/politics/2016/04/26/a-wider-ideological-gap-between-more-and-less-educated-adults/), yes. 
+
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/pew3.png"/></div>
 
 Subsequently, we used the scores to train another party classifier. The accuracy we obtained was 0.59, which shows that those complexity metrics do have actual predictive power over the party choice.
 
@@ -126,7 +134,8 @@ For this purpose, we put together information about topics, sentence complexity 
 
 Finally, we computed the predictions on different years and calculated the correspondent accuracy.
 
-(accuracies plot)
+<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/accuracies-1.png"/></div>
+
 
 The final answer is, therefore, yes:  from just a bunch of words, simply by understanding the topic you’re talking about, your sentiment on it, and the way you’re expressing yourself I can tell you if you’re a supporter of Democratic or Republican party! Surely the accuracy is not consistent every year, but considering that we built the simplest model possible, linear regression, the room for improvement is huge, even though it’s out of the scope of this data story. Hence the result is a confirmation that you can predict the party successfully.
 
