@@ -13,7 +13,8 @@ The Democratic was founded around 1828. Its philosophy of modern liberalism blen
 > **How: the datasets that helped us with this data story**\
 To learn meaningful insights about sentences from politicians we firstly needed the sentences. That’s where came into play the [Quotebank](https://dlab.epfl.ch/people/west/pub/Vaucher-Spitz-Catasta-West_WSDM-21.pdf) dataset, an open corpus of 178 million quotations attributed to the speakers who uttered them, extracted from 162 million English news articles published between 2008 and 2020. From such a huge amount of data, we took quotes where the speaker's party was Republican or Democratic, filtering out speakers who have never run for any state or federal level election. The majority of the speakers affiliated with the political parties were not actual politicians, but celebrities, sports stars, TV personalities, etc. We believe it was beneficial to only take the actual politicians, as they are more likely to speak about actual political matters and represent their party's ideology. Finally, to relate each speaker to the correct party we also used a part of the [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) dataset. The result of such filtering and processing was a “smaller” dataset of 1.6 million quotations. Here is a plot of the distribution of quotes in the years from 2015 to 2020.
 
-<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/quotes_across_time-1.png" width="1000" /></div>
+![Distribution of quotes across the years](/ada-2021-project-datastory/figures/quotes_across_time-1.png)
+<!-- <div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/quotes_across_time-1.png" width="1000" /></div> -->
 
 
 ## A deep dive into the data: what are the trending topics?
