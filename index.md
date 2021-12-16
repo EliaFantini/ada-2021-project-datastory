@@ -34,7 +34,7 @@ The following plot is a summary of the interesting results we obtained from clus
 The first thing worth noting from the stacked plot is the x-axis, reporting the macro-topics. Since this is the result of unsupervised clustering, those are the most frequent themes covered by representatives in their speeches. In the overall top 3, we have racial discrimination, nuclear weapons, and Russiagate.
 What is much more interesting though is the difference in the most important talking points between the two parties. Democrats put racial discrimination in the first place, whereas Republicans talked more than everything else about Russiagate. Trying to explain why is that and what are the social reasons behind such differences is probably incredibly hard and out of the target of this data story. For this reason, we just try to explain the top topic of Democrats as superficial proof of the validity of our findings. Why racial discrimination is a major theme of discussion needs probably no explanation, especially given the 2020 events, but why Democrats talk more about it might be explained by this plot taken  from [Pew Research Center’s research](https://www.pewresearch.org/politics/2017/10/05/4-race-immigration-and-discrimination/).
 
-<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/pew1.png" /></div>
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/pew1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/pew1.png" /></a></div>
 
 Such finding shows that Democrats are more willing to change things to give blacks equal rights with whites, therefore it makes sense that their politicians speak more about the problem.
 (if someone can explain why it might make sense that republicans talked a lot more about Russia-gate, it would be great)
@@ -80,7 +80,7 @@ What can we see? Firstly,  we can notice how negative sentiment exceeds the posi
 
 Looking at the remarkable differences, we see how the guns’ topic is usually more criticized by Democrats. As stated before, this does not necessarily mean that Democrats are against guns, but in this making stricter rules on guns is part of their campaign so we can infer that, and other [studies](https://www.pewresearch.org/fact-tank/2021/09/13/key-facts-about-americans-and-guns/) confirm it also about their supporters.
 
-<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/pew2.png" /></div>
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/pew2.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/pew2.png" /></a></div>
 
 Other confirms of the correctness of results come from the fact that Democrats obviously used much more positive sentiment when they talked about Obama and now about Joe Biden, as well as Democratic Party in general (maybe Maciej add something about bias for certain topics that might explain negative average for Obama and Biden for democrats as well ? ). Other big gaps between the two parties can be found on Taxes and Communism, and in this case, results might be interesting, since Republicans want lower taxes, hence we expected more criticism on it (do you agree? What about communism? Idk what to say).
 
