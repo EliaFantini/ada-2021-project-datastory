@@ -1,6 +1,6 @@
 Political opinions have always been one of the most socially unifying or divisive topics, defining the people we surround ourselves with.  It has been strongly debated the extent to which contemporary political parties well represent each ideology and their internal and temporal coherence of opinions. What we will investigate in the following paragraphs is how such opinions and ideas can influence the way politicians speak, what they talk about, and the way they do it, with the ultimate aim of predicting the party of a politician just by hearing a bunch of words of his/hers, without any prior knowledge on the speaker. Is that possible? A machine learning classifier will try to answer this question.
 ## What and where: the two giants
-Let’s start from the beginning. Since trying to answer the previous questions on a global scale would be too big of research for a single story, we decided to focus on what probably are the two most famous political parties in the world: USA’s Republican and Democratic parties. 
+Let’s start from the beginning. Since trying to answer the previous questions on a global scale would be too big of research for a single story, we decided to focus on what probably are the two most famous political parties in the world: USA’s Republican and Democratic parties.
 
 Even if you’re not living in the United States, you’re probably flooded by news about these two parties almost every day, wherever in the world you live. This is because the USA is one of the most powerful countries in the world and its electoral system is a two-party system. That means that two parties dominate the political field in all three levels of government, and those are exactly the Republican Party and the Democratic Party. Other parties, often generally termed “third parties”, in the U.S. include The Green Party, Libertarians, Constitution Party, and Natural Law Party, but we will not focus on them in this research.
 
@@ -18,15 +18,15 @@ To learn meaningful insights about sentences from politicians we firstly needed 
 
 ## A deep dive into the data: what are the trending topics?
 Previous to any deeper analysis, the most important thing we could do was to understand what the two parties talk about. What are the main problems, topics, trends, and events of the United States? How are they addressed by politicians? Let’s look, first, at the “big words”, those words that are always used and that you will most likely run into if you’re reading a sentence told by whatever politician. Then, we might try to look for a difference between the two parties. We hence performed the same analysis but divided the quotes into two parts. The following clouds of words show the result.
-  
-  
+
+
 <div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/wordclouds_term_frequency-1.png"  width="1000" /></div>
 
-Identifying the most commonly used words is a good first step to understanding what do the politicians often talk about and we can already spot some differences between the two parties, but the results are a bit too fine-grained to draw meaningful conclusions from them. To overcome this issue, we want to identify the high-level concepts that are commonly discussed, and classify each quote into one of them. 
+Identifying the most commonly used words is a good first step to understanding what do the politicians often talk about and we can already spot some differences between the two parties, but the results are a bit too fine-grained to draw meaningful conclusions from them. To overcome this issue, we want to identify the high-level concepts that are commonly discussed, and classify each quote into one of them.
 
 To achieve that, we first tried to use a transfer-learning approach: train a classifier on the data obtained from the Manifesto-Project dataset, which provides sentences of the two parties' manifestos over years 2012, 2016, and 2020, labeled manually by experts to one of fifteen different topics/categories. Unfortunately, the data was too different from ours and thus the resulting accuracy was not satisfying.
 
-We then proceeded with unsupervised clustering using Bertopic, a topic modeling technique that leverages transformers and c-TF-IDF to create dense clusters allowing for easily interpretable topics whilst keeping important words in the topic descriptions. 
+We then proceeded with unsupervised clustering using Bertopic, a topic modeling technique that leverages transformers and c-TF-IDF to create dense clusters allowing for easily interpretable topics whilst keeping important words in the topic descriptions.
 The following plot is a summary of the interesting results we obtained from clustering.
 
 <div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/stacked_plot_topics-1.png" width="1000"/></div>
@@ -39,7 +39,7 @@ What is much more interesting though is the difference in the most important tal
 Such finding shows that Democrats are more willing to change things to give blacks equal rights with whites, therefore it makes sense that their politicians speak more about the problem.
 (if someone can explain why it might make sense that republicans talked a lot more about Russia-gate, it would be great)
 
-Let’s now see things more in detail, looking at the top 10 topics from the two parties during the years. 
+Let’s now see things more in detail, looking at the top 10 topics from the two parties during the years.
 
 <div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/stacked_plot_topics_years-1.png" width="1000"/></div>
 
@@ -55,7 +55,7 @@ People say that how you relate to an obstacle has a big impact on how you try to
 2. HuggingFace transformers library: a deep-learning-based NLP library providing access to several state-of-the-art models, often pre-trained on large datasets. In particular, we used RoBERTa, a model pre-trained specifically for the sentiment analysis task.
 
 
-Both tools assign to a sentence a score between -1 and 1, where -1 means a highly negative sentiment, whereas +1 means a highly positive one. A score of 0 represents neutrality. Plotting the distribution of sentiment for the two tools we could see how VADER-sentiment had much more neutral sentences, as well as a positive average, compared to RoBERTa. 
+Both tools assign to a sentence a score between -1 and 1, where -1 means a highly negative sentiment, whereas +1 means a highly positive one. A score of 0 represents neutrality. Plotting the distribution of sentiment for the two tools we could see how VADER-sentiment had much more neutral sentences, as well as a positive average, compared to RoBERTa.
 
 
 <div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/sentiment_distribution-1.png" width="1000"/></div>
@@ -66,7 +66,7 @@ Despite the differences, there’s no substantial gap in the results, so we coul
 <div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/sentiment_dist_party_comparison-1.png"/></div>
 
 
-From the plots above, we can see that there’s not a huge difference in the sentiment Democrats and Republicans communicate with. There is, though, a statistically significant gap in the average, suggesting, with both tools, that Democrats are slightly more positive in their sentences. Another insight that might be more noticeable in RoBERTa’s plot is the fact that Republicans tend to have much more extremely sentimental quotes. 
+From the plots above, we can see that there’s not a huge difference in the sentiment Democrats and Republicans communicate with. There is, though, a statistically significant gap in the average, suggesting, with both tools, that Democrats are slightly more positive in their sentences. Another insight that might be more noticeable in RoBERTa’s plot is the fact that Republicans tend to have much more extremely sentimental quotes.
 
 From the famous “Psychologie des foules” by Gustave Le Bon we learned that mass communication performs better with emotions rather than logic. This is well known by politicians and, from our analysis, it seems like such an approach is used more by Republican ones.
 
@@ -76,9 +76,9 @@ Investigating for further details, we then looked for sentiments at the topic le
 ( topic sentiments plot - to be created (personally, I would consider only RoBERTa which has less neutral results or maybe joining the results, but two plots are too much stuff to look at for the reader))
 
 
-What can we see? Firstly,  we can notice how negative sentiment exceeds the positive one: quotes are taken from news articles and news usually talk more about problems than positive events, just because they sell better. For this reason, we think that such results make sense. Then we observe how fake news and terrorism are in the top 3 most negative topics for both parties: obviously, it would have been hard to expect something else for terrorism, but it’s interesting to see it exceeded by fake news. Are they going to be one of the biggest threats in the future? 
+What can we see? Firstly,  we can notice how negative sentiment exceeds the positive one: quotes are taken from news articles and news usually talk more about problems than positive events, just because they sell better. For this reason, we think that such results make sense. Then we observe how fake news and terrorism are in the top 3 most negative topics for both parties: obviously, it would have been hard to expect something else for terrorism, but it’s interesting to see it exceeded by fake news. Are they going to be one of the biggest threats in the future?
 
-Looking at the remarkable differences, we see how the guns’ topic is usually more criticized by Democrats. As stated before, this does not necessarily mean that Democrats are against guns, but in this making stricter rules on guns is part of their campaign so we can infer that, and other [studies](https://www.pewresearch.org/fact-tank/2021/09/13/key-facts-about-americans-and-guns/) confirm it also about their supporters. 
+Looking at the remarkable differences, we see how the guns’ topic is usually more criticized by Democrats. As stated before, this does not necessarily mean that Democrats are against guns, but in this making stricter rules on guns is part of their campaign so we can infer that, and other [studies](https://www.pewresearch.org/fact-tank/2021/09/13/key-facts-about-americans-and-guns/) confirm it also about their supporters.
 
 <div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/pew2.png" /></div>
 
@@ -86,16 +86,16 @@ Other confirms of the correctness of results come from the fact that Democrats o
 
 ## What is the complexity and general understandability of the parties’ sentence?
 
-The final aspect we decided to analyze is how the two different parties speak to their supporters. Since one of the pillars of rhetoric is that you should adapt your speech based on the people that will listen to it, and since politicians are probably the major users of this art (rhetoric), we thought that it would be really interesting to see the differences we can find on this regard. 
+The final aspect we decided to analyze is how the two different parties speak to their supporters. Since one of the pillars of rhetoric is that you should adapt your speech based on the people that will listen to it, and since politicians are probably the major users of this art (rhetoric), we thought that it would be really interesting to see the differences we can find on this regard.
 
 Let’s start with the different lexicon used. The first analysis we did was on the distribution of words length.
 
 <div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/words_length_dist-1.png" width="1000"/></div>
 
 
-As we can see the difference is almost none, but there’s a statistically significant difference between the two average lengths of words present in the vocabulary of quotes from Republican vs Democratic speakers (p-value of ~0.0). This might suggest slightly more complex words for Democratics, assuming that a longer word is also more complex. 
+As we can see the difference is almost none, but there’s a statistically significant difference between the two average lengths of words present in the vocabulary of quotes from Republican vs Democratic speakers (p-value of ~0.0). This might suggest slightly more complex words for Democratics, assuming that a longer word is also more complex.
 
-But we wanted to dive deeper by looking at the most common words that appeared just in Republicans’ quotes and vice versa. Subsequently, we also clustered the words obtained here into sets of synonyms. 
+But we wanted to dive deeper by looking at the most common words that appeared just in Republicans’ quotes and vice versa. Subsequently, we also clustered the words obtained here into sets of synonyms.
 
 <div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/wordclouds_unique_words-1.png" width="1000"/></div>
 (cluster list, make a plot of it or something)
@@ -121,7 +121,7 @@ Again, the plots show consistent results with the previous ones, considering all
 
 
 
-The result is stable across years and metrics, and it seems to suggest just one thing: there’s a substantial difference in the complexity and readability of quotes from the two parties and usually, Republican ones are easier to understand, as well as faster to read, even though reading time shows the smallest gap of the four metrics. Does this outcome make sense? Many articles covered this topic and what turned out to be clear in all of them is that Republicans and Democrats have become more and more polarized, with completely different opinions and languages ( [Why Democrats and Republicans Speak Different Languages. LIterally. - The Atlantic](https://www.theatlantic.com/politics/archive/2016/07/why-democrats-and-republicans-literally-speak-different-languages/492539/) , [Democrats and Republicans No Longer Speak the Same Language - The New York Times](https://www.nytimes.com/2021/04/09/opinion/infrastructure-democrats-republicans.html), [Why Democrats and Republicans Use Different Words - Business Insider](https://www.businessinsider.com/political-language-rhetoric-framing-messaging-lakoff-luntz-2017-8?r=US&IR=T)).  Considering all this, we should probably have not expected anything else but a significant gap. Why though Democrats use more complex sentences? Getting back to the rhetoric principle that a speaker adapts to his supporters, does this suggest that Republicans’  defenders are less literate? Accordingly to this plot and this [research from Pew Research Center](https://www.pewresearch.org/politics/2016/04/26/a-wider-ideological-gap-between-more-and-less-educated-adults/), yes. 
+The result is stable across years and metrics, and it seems to suggest just one thing: there’s a substantial difference in the complexity and readability of quotes from the two parties and usually, Republican ones are easier to understand, as well as faster to read, even though reading time shows the smallest gap of the four metrics. Does this outcome make sense? Many articles covered this topic and what turned out to be clear in all of them is that Republicans and Democrats have become more and more polarized, with completely different opinions and languages ( [Why Democrats and Republicans Speak Different Languages. LIterally. - The Atlantic](https://www.theatlantic.com/politics/archive/2016/07/why-democrats-and-republicans-literally-speak-different-languages/492539/) , [Democrats and Republicans No Longer Speak the Same Language - The New York Times](https://www.nytimes.com/2021/04/09/opinion/infrastructure-democrats-republicans.html), [Why Democrats and Republicans Use Different Words - Business Insider](https://www.businessinsider.com/political-language-rhetoric-framing-messaging-lakoff-luntz-2017-8?r=US&IR=T)).  Considering all this, we should probably have not expected anything else but a significant gap. Why though Democrats use more complex sentences? Getting back to the rhetoric principle that a speaker adapts to his supporters, does this suggest that Republicans’  defenders are less literate? Accordingly to this plot and this [research from Pew Research Center](https://www.pewresearch.org/politics/2016/04/26/a-wider-ideological-gap-between-more-and-less-educated-adults/), yes.
 
 <div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/pew3.png"/></div>
 
@@ -129,8 +129,8 @@ Subsequently, we used the scores to train another party classifier. The accuracy
 
 ## Pulling all together: creating the final party classifier.
 
-After all this analysis, it’s time for us to answer our question: can a bunch of words tell what your political view is? 
-For this purpose, we put together information about topics, sentence complexity scores, and sentiment evaluation from both Vader and RoBERTa tools and used them to train a simple party classifier using Linear Regression. From such a model we obtained that all features have a statistically significant correlation with the outcome, hence all the data gathered from our analysis will help us predict the correct party. 
+After all this analysis, it’s time for us to answer our question: can a bunch of words tell what your political view is?
+For this purpose, we put together information about topics, sentence complexity scores, and sentiment evaluation from both Vader and RoBERTa tools and used them to train a simple party classifier using Linear Regression. From such a model we obtained that all features have a statistically significant correlation with the outcome, hence all the data gathered from our analysis will help us predict the correct party.
 
 Finally, we computed the predictions on different years and calculated the correspondent accuracy.
 
@@ -139,3 +139,5 @@ Finally, we computed the predictions on different years and calculated the corre
 
 The final answer is, therefore, yes:  from just a bunch of words, simply by understanding the topic you’re talking about, your sentiment on it, and the way you’re expressing yourself I can tell you if you’re a supporter of Democratic or Republican party! Surely the accuracy is not consistent every year, but considering that we built the simplest model possible, linear regression, the room for improvement is huge, even though it’s out of the scope of this data story. Hence the result is a confirmation that you can predict the party successfully.
 
+<script type="text/javascript" src="assets/js/lightbox.js"></script>
+<link rel="stylesheet" href="assets/css/lightbox.css">
