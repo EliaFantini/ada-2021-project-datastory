@@ -63,7 +63,7 @@ Both tools assign to a sentence a score between -1 and 1, where -1 means a highl
 
 Despite the differences, there’s no substantial gap in the results, so we could proceed by addressing the first question: do the two parties use a different way of talking about topics, i.e. completely different emotions?
 
-<div style="text-align:center"><img style="width:60%" src="/ada-2021-project-datastory/figures/sentiment_dist_party_comparison-1.png"/></div>
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/sentiment_dist_party_comparison-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/sentiment_dist_party_comparison-1.png"/></a></div>
 
 
 From the plots above, we can see that there’s not a huge difference in the sentiment Democrats and Republicans communicate with. There is, though, a statistically significant gap in the average, suggesting, with both tools, that Democrats are slightly more positive in their sentences. Another insight that might be more noticeable in RoBERTa’s plot is the fact that Republicans tend to have much more extremely sentimental quotes.
