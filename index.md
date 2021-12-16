@@ -120,6 +120,13 @@ The result is stable across years and metrics, and it seems to suggest just one 
 Subsequently, we used the scores to train another party classifier. The accuracy we obtained was 0.59, which shows that those complexity metrics do have actual predictive power over the party choice.
 
 ## Pulling all together: creating the final party classifier.
-Coming soon.
 
+After all this analysis, it’s time for us to answer our question: can a bunch of words tell what your political view is? 
+For this purpose, we put together information about topics, sentence complexity scores, and sentiment evaluation from both Vader and RoBERTa tools and used them to train a simple party classifier using Linear Regression. From such a model we obtained that all features have a statistically significant correlation with the outcome, hence all the data gathered from our analysis will help us predict the correct party. 
+
+Finally, we computed the predictions on different years and calculated the correspondent accuracy.
+
+(accuracies plot)
+
+The final answer is, therefore, yes:  from just a bunch of words, simply by understanding the topic you’re talking about, your sentiment on it, and the way you’re expressing yourself I can tell you if you’re a supporter of Democratic or Republican party! Surely the accuracy is not consistent every year, but considering that we built the simplest model possible, linear regression, the room for improvement is huge, even though it’s out of the scope of this data story. Hence the result is a confirmation that you can predict the party successfully.
 
