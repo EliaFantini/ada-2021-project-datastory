@@ -59,7 +59,6 @@ However, what is much more interesting is the difference in the most critical ta
 <div style="text-align:center"><a href="/ada-2021-project-datastory/figures/pew1.png"><img style="width:40%" src="/ada-2021-project-datastory/figures/pew1.png" /></a></div>
 
 Such finding shows that Democrats are more willing to change things to give blacks equal rights with whites; therefore, it makes sense that their politicians speak more about the problem.
-(if someone can explain why it might make sense that republicans talked a lot more about Russia-gate, it would be great)
 
 Let’s now see things more in detail, looking at the top 10 topics from the two parties during the years.
 
