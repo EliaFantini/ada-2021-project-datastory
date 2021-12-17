@@ -129,7 +129,7 @@ Finally, we computed the predictions on different years and calculated the corre
 <div style="text-align:center"><a href="/ada-2021-project-datastory/figures/accuracies-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/accuracies-1.png"/></a></div>
 
 
-The final answer is, therefore, yes:  from just a bunch of words, simply by understanding the topic you’re talking about, your sentiment on it, and the way you’re expressing yourself I can tell you if you’re a supporter of Democratic or Republican party! Surely the accuracy is not consistent every year, but considering that we built the simplest model possible, linear regression, the room for improvement is huge, even though it’s out of the scope of this data story. Hence the result is a confirmation that you can predict the party successfully.
+The final answer is, therefore, yes:  from just a bunch of words, simply by understanding the topic you’re talking about, your sentiment on it, and the way you’re expressing yourself I can tell you if you’re a supporter of Democratic or Republican party! Surely the accuracy is not consistent every year, but considering that we built a simple neural network and the room for improvement is huge, even though it’s out of the scope of this data story. Hence the result is a confirmation that you can predict the party successfully.
 
 <script type="text/javascript" src="assets/js/lightbox.js"></script>
 <link rel="stylesheet" href="assets/css/lightbox.css">
