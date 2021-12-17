@@ -23,7 +23,7 @@ Previous to any more profound analysis, the most important thing we could do was
 
 Identifying the most commonly used words is an excellent first step to understanding what politicians often talk about, and we can already spot some differences between the two parties. Still, the results are a bit too fine-grained to draw meaningful conclusions from them. To overcome this issue, we want to identify the high-level concepts commonly discussed and classify each quote into one of them.
 
-To achieve that, we first tried to use a transfer-learning approach: train a classifier on the data obtained from the Manifesto-Project dataset, which provides sentences of the two parties' manifestos over the years 2012, 2016, and 2020, labeled manually by experts to one of fifteen different topics/categories. Unfortunately, the data was too different from ours, and thus the resulting accuracy was not satisfying.
+To achieve that, we first tried to use a transfer-learning approach: train a classifier on the data obtained from the [Manifesto-Project dataset](https://manifestoproject.wzb.eu), which provides sentences of the two parties' manifestos over the years 2012, 2016, and 2020, labeled manually by experts to one of fifteen different topics/categories. Unfortunately, the data was too different from ours, and thus the resulting accuracy was not satisfying.
 
 We then proceeded with unsupervised clustering using Bertopic. This topic modeling technique leverages transformers and c-TF-IDF to create dense clusters allowing for easily interpretable topics while keeping essential words in the topic descriptions.
 The following plot summarizes the interesting results we obtained from clustering.
