@@ -12,14 +12,29 @@ The Democratic was founded around 1828. Its philosophy of modern liberalism blen
 ## How: the datasets that helped us with this data story
 To learn meaningful insights about sentences from politicians, we firstly needed the sentences. That's where came into play the [Quotebank](https://dlab.epfl.ch/people/west/pub/Vaucher-Spitz-Catasta-West_WSDM-21.pdf) dataset, an open corpus of 178 million quotations attributed to the speakers who uttered them, extracted from 162 million English news articles published between 2008 and 2020. From such a vast amount of data, we took quotes where the speaker's party was Republican or Democratic, filtering out speakers who have never run for any state or federal level election. Most of the speakers affiliated with the political parties were not actual politicians but celebrities, sports stars, TV personalities, etc. We believe it was beneficial only to take the real politicians, as they are more likely to speak about actual political matters and represent their party's ideology. Finally, to relate each speaker to the correct party, we also used a part of the [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) dataset. Such filtering and processing resulted in a "smaller" dataset of 1.6 million quotations. Here is a plot of the distribution of quotes from 2015 to 2020.
 
-<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/quotes_across_time-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/quotes_across_time-1.png" width="1000" /></a></div>
-
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/quotes_across_time.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/quotes_across_time.png" width="1000" /></a></div>
 
 ## A deep dive into the data: what are the trending topics?
-Previous to any more profound analysis, the most important thing we could do was understand what the two parties talked about. What are the main problems, topics, trends, and events of the United States? How do politicians address them? First, let’s look at the “big words”, those words that are always used and that you will most likely run into if you’re reading a sentence told by whatever politician. Then, we might try to look for a difference between the two parties. We hence performed the same analysis but divided the quotes into two parts. The following clouds of words show the result.
 
+Previous to any more profound analysis, the most important thing we could do was understand what the two parties talked about. What are the main problems, topics, trends, and events of the United States? How do politicians address them? First, let’s look at the “big words”, those words that are always used and that you will most likely run into if you’re reading a sentence told by whatever politician.
 
-<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/wordclouds_term_frequency-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/wordclouds_term_frequency-1.png" width="1000"/></a></div>
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/wordcloud_all.png"><img style="width:60%" src="/ada-2021-project-datastory/figureswordcloud_all.png" width="1000"/></a></div>
+
+Then, we try to look for a difference between the two parties. We divide the quotes into two groups based on the party affiliation of the speaker. Then we take the 500 most common words from the first wordcloud, and compare their frequencies between the parties. We divide the per-party word frequencies by the global word frequencies to obtain the relative frequencies per party. We then plot two new wordclouds, now using the relative frequenies instead of total word counts as the weights.
+ 
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/wordcloud_comparison.png"><img style="width:80%" src="/ada-2021-project-datastory/figures/wordcloud_comparison.png" width="1000"/></a></div>
+
+The wordclouds clearly visualize the difference in the vocabulary used by the members of the two American parties. 
+
+In the Democratic wordcloud, we can see that:
+* terms related to the main ideology of the party `democratic` and `democracy` appear quite commonly
+* words like `climate`, `affordable`, `education`, `college`, `medicare` and `communities` point towards important topics for the Democratic party
+* presence of words like `challenge`, `responsibility` or `accountable` showing initiative to point out issues with the current situation
+
+On the other side, in the Republican wordcloud we can observe:
+* presence of words like `horrible` and `tremendous`, which were very frequently used by President Donald Trump
+* `mexico` is quite a popular topic, likely because of the Republican administration attitude towards Mexican border and the plans of building a wall
+* a lot of terms related to international politics: country names including `canada`, `saudi`, `china`, `korea` and `russia` 
 
 Identifying the most commonly used words is an excellent first step to understanding what politicians often talk about, and we can already spot some differences between the two parties. Still, the results are a bit too fine-grained to draw meaningful conclusions from them. To overcome this issue, we want to identify the high-level concepts commonly discussed and classify each quote into one of them.
 
@@ -28,7 +43,7 @@ To achieve that, we first tried to use a transfer-learning approach: train a cla
 We then proceeded with unsupervised clustering using Bertopic. This topic modeling technique leverages transformers and c-TF-IDF to create dense clusters allowing for easily interpretable topics while keeping essential words in the topic descriptions.
 The following plot summarizes the interesting results we obtained from clustering.
 
-<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/stacked_plot_topics.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/stacked_plot_topics.png" width="1500"/></a></div>
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/topic-frequency-by-party.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/topic-frequency-by-party.png" width="1500"/></a></div>
 
 The first thing worth noting from the stacked plot is the x-axis, reporting the macro-topics. Since this is the result of unsupervised clustering, those are the most frequent themes covered by representatives in their speeches. In the overall top 3, we have racial discrimination, nuclear weapons, and Russiagate.
 However, what is much more interesting is the difference in the most critical talking points between the two parties. Democrats put racial discrimination first, whereas Republicans talked more than everything else about Russiagate. Trying to explain why that is and the social reasons behind such differences is probably incredibly hard and out of the target of this data story. For this reason, we try to explain the top topic of Democrats as superficial proof of the validity of our findings. Why racial discrimination is a central theme of discussion needs probably no explanation, especially given the 2020 events, but why Democrats talk more about it might be explained by this plot taken  from [Pew Research Center’s research](https://www.pewresearch.org/politics/2017/10/05/4-race-immigration-and-discrimination/).
@@ -40,7 +55,7 @@ Such finding shows that Democrats are more willing to change things to give blac
 
 Let’s now see things more in detail, looking at the top 10 topics from the two parties during the years.
 
-<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/stacked_plot_topics_years-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/stacked_plot_topics_years-1.png" width="1000"/></a></div>
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/topic-per-year.png"><img style="width:80%" src="/ada-2021-project-datastory/figures/topics-per-year.png" width="1000"/></a></div>
 
 First we notice a spike in the `Nuclear Weapons` topics in 2015 in the Democrat side, likely referring to the Joint Comprehensive Plan of Action, nuclear deal with Iran which Obama helped negotiate. In the following year, as expected, we see the rise of `Hillary Clinton`, due to the 2016 presidential election. In sight of that, Republicans talked more about immigration from the `Mexican Border` (we must rember Trump's wall on the Mexican border was a strong point in his campaign), while Democrats seemed more focused on `Racial Discrimination` and the middle east (`Isis` and `Israel`). By the end of the year we see the rise of what whould become the most talked about the following year, the controversial `RussiaGate`  (Special Counsel investigation), which was an investigation into Russian interference in the 2016 United States elections, links between associates of Donald Trump and Russian officials, and possible obstruction of justice by Trump and his associates. From 2017 we also notice `North Korea`, 
 
@@ -48,21 +63,22 @@ To conclude on this first part of the topic analysis, we tried to build a classi
 
 ## How do Democrats and Republicans relate to national and international problems?
 
-People say that how you relate to an obstacle has a significant impact on how you try to solve the obstacle itself. Even though that’s often said about the individual’s way of solving problems, it’s essential to see how political parties approach different issues to understand further the data we have seen so far. For this reason, we applied two different sentiment analysis tools:
+People say that how you relate to an obstacle has a significant impact on how you try to solve the obstacle itself. Even though that’s often said about the individual’s way of solving problems, it’s essential to see how political parties approach different issues to understand further the data we have seen so far. 
 
-1. VADER-Sentiment library: a rule-based sentiment analysis tool
-2. HuggingFace transformers library: a deep-learning-based NLP library providing access to several state-of-the-art models, often pre-trained on large datasets. In particular, we used RoBERTa, a model pre-trained specifically for the sentiment analysis task.
+Having identified the topics often discussed by politicians, it is interesting to also identify their attitude towards those topics and identify whether it depends on a politican's affiliation.
 
+To achieve that, we will make use of two sentiment analysis tools:
+1. [`VADER-Sentiment`](https://github.com/cjhutto/vaderSentiment) library:  a rule-based sentiment analysis tool
+2. *HuggingFace* [`transformers`](https://huggingface.co/docs/transformers/) library: a deep-learning-based NLP library providing access to several state-of-the-art models, often pre-trained on large datasets. In particular, we will use [this](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment) *RoBERTa* model for pre-trained specifically for the sentiment analysis task.
 
-Both tools assign to a sentence a score between -1 and 1, where -1 means a highly negative sentiment, whereas +1 means a highly positive one. A score of 0 represents neutrality. Plotting the distribution of sentiment for the two tools, we could see how VADER-sentiment had much more neutral sentences and a positive average than RoBERTa.
+Both tools will assign to a sentence a score between -1 and 1, where -1 means a highly negative sentiment, whereas +1 means a highly positive one. A score of 0 represents neutrality. Let's first have a look at the global sentiment distributions that the models produced:
 
-
-<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/sentiment_distribution-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/sentiment_distribution-1.png" width="1000"/></a></div>
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/sentiment_distribution-all.png"><img style="width:80%" src="/ada-2021-project-datastory/figures/sentiment_distribution-all.png"></a></div>
 
 
 Despite the differences, there’s no substantial gap in the results; therefore, we can address the first question: do the two parties use a different way of talking about topics, i.e., completely different emotions?
 
-<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/sentiment_dist_party_comparison-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/sentiment_dist_party_comparison-1.png"/></a></div>
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/sentiment_distribution-per-party.png"><img style="width:80%" src="/ada-2021-project-datastory/figures/sentiment_dist_party_comparison-1.png"/></a></div>
 
 
 From the plots above, we can see no considerable difference in the sentiment Democrats and Republicans communicate with. There is, though, a statistically significant gap in the average, suggesting, with both tools, that Democrats are slightly more positive in their sentences. Another insight that might be more noticeable in RoBERTa’s plot is that Republicans tend to have much more highly sentimental quotes.
@@ -116,7 +132,7 @@ From the results shown above, we can see a clear (and statistically significant)
 
 Again, the plots show consistent results with the previous ones, considering all speakers from both parties. The last thing we can do is verify if we can observe any difference through the years.
 
-<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/metrics_years-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/metrics_years-1.png" width="1000"/></a></div>
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/metrics-accross-time.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/metrics-accross-time.png" width="1000"/></a></div>
 
 
 
