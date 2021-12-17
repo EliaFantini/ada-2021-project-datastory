@@ -33,7 +33,7 @@ In the Democratic wordcloud, we can see that:
 
 On the other side, in the Republican wordcloud we can observe:
 * presence of words like `horrible` and `tremendous`, which were very frequently used by President Donald Trump
-* `mexico` is quite a popular topic, likely because of the Republican administration attitude towards Mexican border and the plans of building a wall
+* `mexico` is quite a popular topic, likely because of the Republican administration attitude towards the Mexican border and the plans of building a wall
 * a lot of terms related to international politics: country names including `canada`, `saudi`, `china`, `korea` and `russia` 
 
 Identifying the most commonly used words is an excellent first step to understanding what politicians often talk about, and we can already spot some differences between the two parties. Still, the results are a bit too fine-grained to draw meaningful conclusions from them. To overcome this issue, we want to identify the high-level concepts commonly discussed and classify each quote into one of them.
@@ -75,21 +75,15 @@ Both tools will assign to a sentence a score between -1 and 1, where -1 means a 
 
 <div style="text-align:center"><a href="/ada-2021-project-datastory/figures/sentiment-distribution-all.png"><img style="width:80%" src="/ada-2021-project-datastory/figures/sentiment-distribution-all.png"></a></div>
 
-
-Despite the differences, there’s no substantial gap in the results; therefore, we can address the first question: do the two parties use a different way of talking about topics, i.e., completely different emotions?
+The two distributions are very different from each other. The sentiment predicted by `VADER` has a large peak around the 0 mark, which means that it struggled to attribute any kind of sentiment to a large portion of the quotations. Apart from the peak, the distribution looks like a sum of two normal distributions with mean at `0.5` and `-0.5`. The sentiment predicted by `RoBERTa` follows an almost uniform distribution, but the negative values appear more frequently and there are visible peaks at `[-1, 0, 1]`. Let's now take a look at the sentiment distributions per party:
 
 <div style="text-align:center"><a href="/ada-2021-project-datastory/figures/sentiment-distribution-per-party.png"><img style="width:80%" src="/ada-2021-project-datastory/figures//sentiment-distribution-per-party.png"/></a></div>
 
+The results are similar for both parties, but not totally identical. On average the Democrats' quotations have a slightly more positive sentiment than those of the Republicans. A t-test shows that the gap in the means is statistically significant, returning `p-value < 1e-200` for both `RoBERTa` and `VADER` distributions. Another interesting observation is that the Republicans tend to have more highly positive (`> 0.5`) and highly negative (` < 0.5`) quotes. This is especially visible in the `RoBERTa` plot - we see clear peaks on the left and right ends of the distribution. Gustave Le Bon shows in *“The Crowd: A Study of the Popular Minds”* that emotions play a crucial role in the mass communication and from our analysis it seems that the Republican politicans share his point of view.
 
-From the plots above, we can see no considerable difference in the sentiment Democrats and Republicans communicate with. There is, though, a statistically significant gap in the average, suggesting, with both tools, that Democrats are slightly more positive in their sentences. Another insight that might be more noticeable in RoBERTa’s plot is that Republicans tend to have much more highly sentimental quotes.
+Despite the differences, there’s no substantial gap in the results when looking at the global sentiment distributions of the two parties. Investigating further details, we then looked for sentiments at the topic level. Before proceeding, we would like to clarify a possible misunderstanding of the results. Suppose, for example, we see a predominant negative sentiment over the topic of education. In that case, that doesn’t mean that politicians are against it, but rather that when they talk about it they usually have some criticism about it. To be more specific, if a speaker is complaining about the educational system and wants to suggest some improvements, he would probably use some negative sentiment in their words, but that wouldn’t mean that they are against education itself. Let’s now look at the results.
 
-From the famous “Psychologie des Foules” by Gustave Le Bon, we learned that mass communication performs better with emotions rather than logic. Politicians well know this and, from our analysis, it seems like such an approach is used more by Republican ones.
-
-Investigating further details, we then looked for sentiments at the topic level. Before proceeding, we would like to clarify a possible misunderstanding of the results. Suppose, for example, we see a predominant negative sentiment over the topic of education. In that case, that doesn’t mean that politicians are against it, but rather that when they talk about it they usually have some criticism about it. To be more specific, if a speaker is complaining about the educational system and wants to suggest some improvements, he would probably use some negative sentiment in their words, but that wouldn’t mean that they are against education itself. Let’s now look at the results.
-
-
-( topic sentiments plot - to be created (personally, I would consider only RoBERTa which has less neutral results or maybe joining the results, but two plots are too much stuff to look at for the reader))
-
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/Sentiment per topic (RoBERTa).png"><img style="width:90%" src="/ada-2021-project-datastory/figures/Sentiment per topic (RoBERTa).png" /></a></div>
 
 What can we see? Firstly,  we can notice how negative sentiment exceeds positive: quotes are taken from news articles, which usually talk more about problems than positive events, just because they sell better. For this reason, we think that such results make sense. Then we observe how fake news and terrorism are in the top 3 most negative topics for both parties. It would have been hard to expect something else for terrorism, but it’s interesting to see it exceeded by fake news. Are they going to be one of the biggest threats in the future?
 
