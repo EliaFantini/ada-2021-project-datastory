@@ -106,10 +106,6 @@ As we can see, the difference is almost none. Still, there’s a statistically s
 
 But we wanted to dive deeper by looking at the most common words that appeared just in Republicans’ quotes and vice versa. Subsequently, we also clustered the words obtained here into sets of synonyms.
 
-<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/wordclouds_unique_words-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/wordclouds_unique_words-1.png" width="1000"/></a></div>
-(cluster list, make a plot of it or something)
-(Help me on this one, idk what to write)
-
 But a sentence is not just about the words in it, but how they're put together as well. For this reason, we then moved our attention to some metrics that are used to measure the grammatical complexity of quotes:
 
 1. Flesch reading ease: in the Flesch reading ease test, higher scores indicate material that is easier to read; lower numbers mark passages that are more difficult to read.
