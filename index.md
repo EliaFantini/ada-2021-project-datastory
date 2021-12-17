@@ -12,17 +12,17 @@ The Democratic was founded around 1828. Its philosophy of modern liberalism blen
 ## How: the datasets that helped us with this data story
 To learn meaningful insights about sentences from politicians, we firstly needed the sentences. That's where came into play the [Quotebank](https://dlab.epfl.ch/people/west/pub/Vaucher-Spitz-Catasta-West_WSDM-21.pdf) dataset, an open corpus of 178 million quotations attributed to the speakers who uttered them, extracted from 162 million English news articles published between 2008 and 2020. From such a vast amount of data, we took quotes where the speaker's party was Republican or Democratic, filtering out speakers who have never run for any state or federal level election. Most of the speakers affiliated with the political parties were not actual politicians but celebrities, sports stars, TV personalities, etc. We believe it was beneficial only to take the real politicians, as they are more likely to speak about actual political matters and represent their party's ideology. Finally, to relate each speaker to the correct party, we also used a part of the [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) dataset. Such filtering and processing resulted in a "smaller" dataset of 1.6 million quotations. Here is a plot of the distribution of quotes from 2015 to 2020.
 
-<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/quotes_across_time.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/quotes_across_time.png" width="1000" /></a></div>
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/quotes-across-time.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/quotes-across-time.png"/></a></div>
 
 ## A deep dive into the data: what are the trending topics?
 
 Previous to any more profound analysis, the most important thing we could do was understand what the two parties talked about. What are the main problems, topics, trends, and events of the United States? How do politicians address them? First, let’s look at the “big words”, those words that are always used and that you will most likely run into if you’re reading a sentence told by whatever politician.
 
-<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/wordcloud_all.png"><img style="width:60%" src="/ada-2021-project-datastory/figureswordcloud_all.png" width="1000"/></a></div>
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/wordcloud_all.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/wordcloud_all.png"/></a></div>
 
 Then, we try to look for a difference between the two parties. We divide the quotes into two groups based on the party affiliation of the speaker. Then we take the 500 most common words from the first wordcloud, and compare their frequencies between the parties. We divide the per-party word frequencies by the global word frequencies to obtain the relative frequencies per party. We then plot two new wordclouds, now using the relative frequenies instead of total word counts as the weights.
  
-<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/wordcloud_comparison.png"><img style="width:80%" src="/ada-2021-project-datastory/figures/wordcloud_comparison.png" width="1000"/></a></div>
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/wordcloud_comparison.png"><img style="width:80%" src="/ada-2021-project-datastory/figures/wordcloud_comparison.png" width="1200"/></a></div>
 
 The wordclouds clearly visualize the difference in the vocabulary used by the members of the two American parties. 
 
@@ -43,7 +43,7 @@ To achieve that, we first tried to use a transfer-learning approach: train a cla
 We then proceeded with unsupervised clustering using Bertopic. This topic modeling technique leverages transformers and c-TF-IDF to create dense clusters allowing for easily interpretable topics while keeping essential words in the topic descriptions.
 The following plot summarizes the interesting results we obtained from clustering.
 
-<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/topic-frequency-by-party.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/topic-frequency-by-party.png" width="1500"/></a></div>
+<div style="text-align:center"><a href="/ada-2021-project-datastory/figures/topic-frequency-by-party.png"><img style="width:80%" src="/ada-2021-project-datastory/figures/topic-frequency-by-party.png"/></a></div>
 
 The first thing worth noting from the stacked plot is the x-axis, reporting the macro-topics. Since this is the result of unsupervised clustering, those are the most frequent themes covered by representatives in their speeches. In the overall top 3, we have racial discrimination, nuclear weapons, and Russiagate.
 However, what is much more interesting is the difference in the most critical talking points between the two parties. Democrats put racial discrimination first, whereas Republicans talked more than everything else about Russiagate. Trying to explain why that is and the social reasons behind such differences is probably incredibly hard and out of the target of this data story. For this reason, we try to explain the top topic of Democrats as superficial proof of the validity of our findings. Why racial discrimination is a central theme of discussion needs probably no explanation, especially given the 2020 events, but why Democrats talk more about it might be explained by this plot taken  from [Pew Research Center’s research](https://www.pewresearch.org/politics/2017/10/05/4-race-immigration-and-discrimination/).
