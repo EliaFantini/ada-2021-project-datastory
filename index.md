@@ -81,7 +81,7 @@ Both tools will assign to a sentence a score between -1 and 1, where -1 means a 
 
 <div style="text-align:center"><a href="/ada-2021-project-datastory/figures/sentiment-distribution-all.png"><img style="width:80%" src="/ada-2021-project-datastory/figures/sentiment-distribution-all.png"></a></div>
 
-The two distributions are very different from each other. The sentiment predicted by `VADER` has a large peak around the 0 mark, which means that it struggled to attribute any kind of sentiment to a large portion of the quotations. Apart from the peak, the distribution looks like a sum of two normal distributions with means of `0.5` and `-0.5`. The sentiment predicted by `RoBERTa` follows an almost uniform distribution, but the negative values appear more frequently and there are visible peaks at `[-1, 0, 1]`. Let's now take a look at the sentiment distributions per party:
+The two distributions are very different from each other. The sentiment predicted by `VADER` has a large peak around the 0 mark, which means that it struggled to attribute any kind of sentiment to a large portion of the quotations. Apart from the peak, the distribution looks like a sum of two normal distributions with means of `0.5` and `-0.5`. The sentiment predicted by `RoBERTa` follows an almost uniform distribution, but the negative values appear more frequently and there are visible peaks at `[-1, 0, 1]`. Let's now take a look at the sentiment distributions per party (excluding the zero-sentiment quotes from `VADER`):
 
 <div style="text-align:center"><a href="/ada-2021-project-datastory/figures/sentiment-distribution-per-party.png"><img style="width:100%" src="/ada-2021-project-datastory/figures//sentiment-distribution-per-party.png"/></a></div>
 
