@@ -104,9 +104,7 @@ Let’s start with the different lexicon used. The first analysis we did was on 
 
 As we can see, the difference is almost none. Still, there’s a statistically significant difference between the two average lengths of words in quotes from Republican vs. Democratic speakers (p-value of ~0.0). This might suggest the use of slightly more complex words by Democratics, assuming that a longer-term is also more complex.
 
-But we wanted to dive deeper by looking at the most common words that appeared just in Republicans’ quotes and vice versa. Subsequently, we also clustered the words obtained here into sets of synonyms.
-
-But a sentence is not just about the words in it, but how they're put together as well. For this reason, we then moved our attention to some metrics that are used to measure the grammatical complexity of quotes:
+A sentence is not just about the words in it, but how they're put together as well. For this reason, we then moved our attention to some metrics that are used to measure the grammatical complexity of quotes:
 
 1. Flesch reading ease: in the Flesch reading ease test, higher scores indicate material that is easier to read; lower numbers mark passages that are more difficult to read.
 2. Dale Chall readability score: different from other tests since it uses a lookup table of the most commonly used 3000 English words. It returns the grade level necessary to understand the sentence. Hence, the higher the score, the higher is the difficulty.
