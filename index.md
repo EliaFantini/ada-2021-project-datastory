@@ -42,7 +42,7 @@ Let’s now see things more in detail, looking at the top 10 topics from the two
 
 <div style="text-align:center"><a href="/ada-2021-project-datastory/figures/stacked_plot_topics_years-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/stacked_plot_topics_years-1.png" width="1000"/></a></div>
 
-… explanation of results, when we have them…
+First we notice a spike in the `Nuclear Weapons` topics in 2015 in the Democrat side, likely referring to the Joint Comprehensive Plan of Action, nuclear deal with Iran which Obama helped negotiate. In the following year, as expected, we see the rise of `Hillary Clinton`, due to the 2016 presidential election. In sight of that, Republicans talked more about immigration from the `Mexican Border` (we must rember Trump's wall on the Mexican border was a strong point in his campaign), while Democrats seemed more focused on `Racial Discrimination` and the middle east (`Isis` and `Israel`). By the end of the year we 
 
 To conclude on this first part of the topic analysis, we tried to build a classifier that can predict the speaker's party without knowing the quote itself but just looking at the theme covered in it. Just with that, we obtained a validation accuracy of 64%. By adding the year to the classifier's features, we reached a 70.7% accuracy. Such a result might already give us a hint of the answer to the question in the title of this article. But let's proceed with further analysis.
 
