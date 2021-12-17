@@ -75,24 +75,24 @@ Investigating further details, we then looked for sentiments at the topic level.
 ( topic sentiments plot - to be created (personally, I would consider only RoBERTa which has less neutral results or maybe joining the results, but two plots are too much stuff to look at for the reader))
 
 
-What can we see? Firstly,  we can notice how negative sentiment exceeds positive: quotes are taken from news articles, and news usually talk more about problems than positive events, just because they sell better. For this reason, we think that such results make sense. Then we observe how fake news and terrorism are in the top 3 most negative topics for both parties. It would have been hard to expect something else for terrorism, but it’s interesting to see it exceeded by fake news. Are they going to be one of the biggest threats in the future?
+What can we see? Firstly,  we can notice how negative sentiment exceeds positive: quotes are taken from news articles, which usually talk more about problems than positive events, just because they sell better. For this reason, we think that such results make sense. Then we observe how fake news and terrorism are in the top 3 most negative topics for both parties. It would have been hard to expect something else for terrorism, but it’s interesting to see it exceeded by fake news. Are they going to be one of the biggest threats in the future?
 
 Looking at the remarkable differences, we see how the guns’ topic is usually more criticized by Democrats. As stated before, this does not necessarily mean that Democrats are against guns, but making stricter rules on guns is part of their campaign, so we can infer that, and other [studies](https://www.pewresearch.org/fact-tank/2021/09/13/key-facts-about-americans-and-guns/) confirm it also about their supporters.
 
 <div style="text-align:center"><a href="/ada-2021-project-datastory/figures/pew2.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/pew2.png" /></a></div>
 
-Other confirms of the correctness of results come from the fact that Democrats obviously used much more positive sentiment when they talked about Obama and now about Joe Biden, as well as Democratic Party in general (maybe Maciej add something about bias for certain topics that might explain negative average for Obama and Biden for democrats as well ? ). Other big gaps between the two parties can be found on Taxes and Communism, and in this case, results might be interesting, since Republicans want lower taxes, hence we expected more criticism on it (do you agree? What about communism? Idk what to say).
+The fact that Democrats used much more positive sentiment when they talked about Obama, Joe Biden, and the Democratic Party confirms the correctness of results (maybe Maciej add something about bias for specific topics that might explain the negative average for Obama and Biden for democrats as well ? ). Other significant gaps between the two parties can be found on Taxes and Communism, and in this case, results might be interesting, since Republicans want lower taxes; hence we expected more criticism on it (do you agree? What about communism? Idk what to say).
 
 ## What is the complexity and general understandability of the parties’ sentence?
 
-The final aspect we decided to analyze is how the two different parties speak to their supporters. Since one of the pillars of rhetoric is that you should adapt your speech based on the people that will listen to it, and since politicians are probably the major users of this art (rhetoric), we thought that it would be really interesting to see the differences we can find on this regard.
+The final aspect we decided to analyze is how the two different parties speak to their supporters. Since one of the pillars of rhetoric is that you should adapt your speech based on the people who will listen to it, we thought it would be fascinating to see the differences we can find.
 
 Let’s start with the different lexicon used. The first analysis we did was on the distribution of words length.
 
 <div style="text-align:center"><a href="/ada-2021-project-datastory/figures/words_length_dist-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/words_length_dist-1.png" width="1000"/></a></div>
 
 
-As we can see the difference is almost none, but there’s a statistically significant difference between the two average lengths of words present in the vocabulary of quotes from Republican vs Democratic speakers (p-value of ~0.0). This might suggest slightly more complex words for Democratics, assuming that a longer word is also more complex.
+As we can see, the difference is almost none. Still, there’s a statistically significant difference between the two average lengths of words in quotes from Republican vs. Democratic speakers (p-value of ~0.0). This might suggest the use of slightly more complex words by Democratics, assuming that a longer-term is also more complex.
 
 But we wanted to dive deeper by looking at the most common words that appeared just in Republicans’ quotes and vice versa. Subsequently, we also clustered the words obtained here into sets of synonyms.
 
@@ -100,27 +100,27 @@ But we wanted to dive deeper by looking at the most common words that appeared j
 (cluster list, make a plot of it or something)
 (Help me on this one, idk what to write)
 
-But a sentence is not just about the words in it, but how they’re put together as well. For this reason, we then moved our attention to some metrics that are used to measure the grammatical complexity of quotes:
+But a sentence is not just about the words in it, but how they're put together as well. For this reason, we then moved our attention to some metrics that are used to measure the grammatical complexity of quotes:
 
 1. Flesch reading ease: in the Flesch reading ease test, higher scores indicate material that is easier to read; lower numbers mark passages that are more difficult to read.
-2. Dale Chall readability score: different from other tests, since it uses a lookup table of the most commonly used 3000 English words. It returns the grade level necessary to understand the sentence. Hence, the higher the score, the higher is the difficulty.
+2. Dale Chall readability score: different from other tests since it uses a lookup table of the most commonly used 3000 English words. It returns the grade level necessary to understand the sentence. Hence, the higher the score, the higher is the difficulty.
 3. Text Standard: based upon a combination of all the library's tests, returns the estimated school grade level required to understand the text.
-4. Reading time: returns the reading time of the given text. Assumes 14.69ms per character.
+4. Reading time: returns the reading time of the given text—Assumes 14.69ms per character.
 
 <div style="text-align:center"><a href="/ada-2021-project-datastory/figures/complexity_metrics_14-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/complexity_metrics_14-1.png" width="1000"/></a></div>
 
-From the results shown above we can see a clear (and statistically significant) difference between the scores in all metrics, but before drawing any conclusion, let’s repeat the analysis on just the quotes from the two most important men from the two parties: Barack Obama and Donald Trump.
+From the results shown above, we can see a clear (and statistically significant) difference between the scores in all metrics, but before drawing any conclusion, let’s repeat the analysis on just the quotes from the two most important men from the two parties: Barack Obama and Donald Trump.
 
 <div style="text-align:center"><a href="/ada-2021-project-datastory/figures/complexity_metrics_19-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/complexity_metrics_19-1.png" width="1000"/></a></div>
 
 
-Again, the plots show consistent results with the previous ones, considering all speakers from both parties. The last thing we can do is if we can observe any difference through the years.
+Again, the plots show consistent results with the previous ones, considering all speakers from both parties. The last thing we can do is verify if we can observe any difference through the years.
 
 <div style="text-align:center"><a href="/ada-2021-project-datastory/figures/metrics_years-1.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/metrics_years-1.png" width="1000"/></a></div>
 
 
 
-The result is stable across years and metrics, and it seems to suggest just one thing: there’s a substantial difference in the complexity and readability of quotes from the two parties and usually, Republican ones are easier to understand, as well as faster to read, even though reading time shows the smallest gap of the four metrics. Does this outcome make sense? Many articles covered this topic and what turned out to be clear in all of them is that Republicans and Democrats have become more and more polarized, with completely different opinions and languages ( [Why Democrats and Republicans Speak Different Languages. LIterally. - The Atlantic](https://www.theatlantic.com/politics/archive/2016/07/why-democrats-and-republicans-literally-speak-different-languages/492539/) , [Democrats and Republicans No Longer Speak the Same Language - The New York Times](https://www.nytimes.com/2021/04/09/opinion/infrastructure-democrats-republicans.html), [Why Democrats and Republicans Use Different Words - Business Insider](https://www.businessinsider.com/political-language-rhetoric-framing-messaging-lakoff-luntz-2017-8?r=US&IR=T)).  Considering all this, we should probably have not expected anything else but a significant gap. Why though Democrats use more complex sentences? Getting back to the rhetoric principle that a speaker adapts to his supporters, does this suggest that Republicans’  defenders are less literate? Accordingly to this plot and this [research from Pew Research Center](https://www.pewresearch.org/politics/2016/04/26/a-wider-ideological-gap-between-more-and-less-educated-adults/), yes.
+The result is stable across years and metrics. It seems to suggest just one thing: there’s a substantial difference in the complexity and readability of quotes from the two parties, and usually, Republican ones are easier to understand, as well as faster to read, even though reading time shows the smallest gap of the four metrics. Does this outcome make sense? Many articles covered this topic and turned out to be transparent in all of them is that Republicans and Democrats have become more and more polarized, with entirely different opinions and languages ( [Why Democrats and Republicans Speak Different Languages. LIterally. - The Atlantic](https://www.theatlantic.com/politics/archive/2016/07/why-democrats-and-republicans-literally-speak-different-languages/492539/) , [Democrats and Republicans No Longer Speak the Same Language - The New York Times](https://www.nytimes.com/2021/04/09/opinion/infrastructure-democrats-republicans.html), [Why Democrats and Republicans Use Different Words - Business Insider](https://www.businessinsider.com/political-language-rhetoric-framing-messaging-lakoff-luntz-2017-8?r=US&IR=T)).  Considering all this, we should probably have not expected anything else but a significant gap. Why though Democrats use more complex sentences? Getting back to the rhetoric principle that a speaker adapts to his supporters, does this suggest that Republicans’  defenders are less literate? Accordingly to this plot and this [research from Pew Research Center](https://www.pewresearch.org/politics/2016/04/26/a-wider-ideological-gap-between-more-and-less-educated-adults/), yes.
 
 <div style="text-align:center"><a href="/ada-2021-project-datastory/figures/pew3.png"><img style="width:60%" src="/ada-2021-project-datastory/figures/pew3.png"/></a></div>
 
@@ -129,7 +129,7 @@ Subsequently, we used the scores to train another party classifier. The accuracy
 ## Pulling all together: creating the final party classifier.
 
 After all this analysis, it’s time for us to answer our question: can a bunch of words tell what your political view is?
-For this purpose, we put together information about topics, sentence complexity scores, and sentiment evaluation from both Vader and RoBERTa tools and used them to train a simple party classifier using Linear Regression. From such a model we obtained that all features have a statistically significant correlation with the outcome, hence all the data gathered from our analysis will help us predict the correct party.
+For this purpose, we put together information about topics, sentence complexity scores, and sentiment evaluation from both Vader and RoBERTa tools and used them to train a simple party classifier using Linear Regression. From such a model, we obtained that all features have a statistically significant correlation with the outcome; hence all the data gathered from our analysis will help us predict the correct party.
 
 Finally, we computed the predictions on different years and calculated the correspondent accuracy.
 
